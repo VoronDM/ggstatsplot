@@ -61,3 +61,5 @@ revdep/checks.noindex
 revdep/data.sqlite
 revdep/library
 revdep/library.noindex
+.Rdata
+.quarto
