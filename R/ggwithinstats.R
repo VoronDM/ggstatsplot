@@ -98,6 +98,7 @@ ggwithinstats <- function(
   conf.level = 0.95,
   nboot = 100L,
   tr = 0.2,
+  outliers.display = FALSE,
   centrality.plotting = TRUE,
   centrality.type = type,
   centrality.point.args = list(size = 5, color = "darkred"),
@@ -107,7 +108,7 @@ ggwithinstats <- function(
   point.args = list(size = 3, alpha = 0.5, na.rm = TRUE),
   point.path = TRUE,
   point.path.args = list(alpha = 0.5, linetype = "dashed"),
-  boxplot.args = list(width = 0.2, alpha = 0.5, na.rm = TRUE),
+  boxplot.args = list(width = 0.2, alpha = 0.5, na.rm = TRUE, outlier.colour = "red", outlier.alpha = 1),
   violin.args = list(width = 0.5, alpha = 0.2, na.rm = TRUE),
   ggsignif.args = list(textsize = 3, tip_length = 0.01, na.rm = TRUE),
   ggtheme = ggstatsplot::theme_ggstatsplot(),
@@ -160,11 +161,15 @@ ggwithinstats <- function(
     }
   }
 
+  # outliers -------------------------------
+
+  outliers.args <- if (!outliers.display) list(outlier.shape = NA)
+
   # plot -------------------------------------------
 
   plot_comparison <- ggplot(data, aes({{ x }}, {{ y }}, group = .rowid)) +
     exec(geom_point, aes(color = {{ x }}), !!!point.args) +
-    exec(geom_boxplot, aes({{ x }}, {{ y }}), inherit.aes = FALSE, !!!boxplot.args, outlier.shape = NA) +
+    exec(geom_boxplot, aes({{ x }}, {{ y }}), inherit.aes = FALSE, !!!boxplot.args, !!!outliers.args) +
     exec(geom_violin, aes({{ x }}, {{ y }}), inherit.aes = FALSE, !!!violin.args)
 
   # add a connecting path only if there are only two groups

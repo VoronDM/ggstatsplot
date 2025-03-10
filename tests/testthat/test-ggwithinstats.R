@@ -72,6 +72,53 @@ test_that(
         pairwise.display = "none"
       )
     )
+    set.seed(123)
+    expect_doppelganger(
+      title = "boxplot with centrality path and without points",
+      fig = ggwithinstats(
+        iris_long,
+        condition,
+        value,
+        violin.args = list(width = 0, linewidth = 0),
+        centrality.point.args = list(size = 5, alpha = 0.5, color = "darkred"),
+        centrality.path = TRUE,
+        point.args = list(alpha = 0),
+        results.subtitle = FALSE,
+        pairwise.display = "none"
+      )
+    )
+    set.seed(123)
+    expect_doppelganger(
+      title = "boxplot with centrality path, outliers and without points",
+      fig = ggwithinstats(
+        iris_long,
+        condition,
+        value,
+        violin.args = list(width = 0, linewidth = 0),
+        centrality.point.args = list(size = 5, alpha = 0.5, color = "darkred"),
+        point.args = list(alpha = 0),
+        centrality.path = TRUE,
+        outliers.display = TRUE,
+        results.subtitle = FALSE,
+        pairwise.display = "none"
+      )
+    )
+    set.seed(123)
+    expect_doppelganger(
+      title = "boxplot with outliers and without centrality path and points",
+      fig = ggwithinstats(
+        iris_long,
+        condition,
+        value,
+        violin.args = list(width = 0, linewidth = 0),
+        centrality.point.args = list(size = 5, alpha = 0.5, color = "darkred"),
+        point.args = list(alpha = 0),
+        centrality.path = FALSE,
+        outliers.display = TRUE,
+        results.subtitle = FALSE,
+        pairwise.display = "none"
+      )
+    )
   }
 )
 

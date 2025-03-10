@@ -51,6 +51,8 @@ the plot will be returned.}
 \code{results.subtitle = FALSE}.}
     \item{\code{caption}}{The text for the plot caption. This argument is relevant only
 if \code{bf.message = FALSE}.}
+    \item{\code{outliers.display}}{Logical that decides whether outliers are to be
+displayed as the points at boxplot (Default: \code{FALSE}).}
     \item{\code{centrality.plotting}}{Logical that decides whether centrality tendency
 measure is to be displayed as a point with a label (Default: \code{TRUE}).
 Function decides which central tendency measure to show depending on the

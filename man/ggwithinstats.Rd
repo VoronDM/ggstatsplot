@@ -24,6 +24,7 @@ ggwithinstats(
   conf.level = 0.95,
   nboot = 100L,
   tr = 0.2,
+  outliers.display = FALSE,
   centrality.plotting = TRUE,
   centrality.type = type,
   centrality.point.args = list(size = 5, color = "darkred"),
@@ -33,7 +34,8 @@ ggwithinstats(
   point.args = list(size = 3, alpha = 0.5, na.rm = TRUE),
   point.path = TRUE,
   point.path.args = list(alpha = 0.5, linetype = "dashed"),
-  boxplot.args = list(width = 0.2, alpha = 0.5, na.rm = TRUE),
+  boxplot.args = list(width = 0.2, alpha = 0.5, na.rm = TRUE, outlier.colour = "red",
+    outlier.alpha = 1),
   violin.args = list(width = 0.5, alpha = 0.2, na.rm = TRUE),
   ggsignif.args = list(textsize = 3, tip_length = 0.01, na.rm = TRUE),
   ggtheme = ggstatsplot::theme_ggstatsplot(),
@@ -137,6 +139,9 @@ for the effect size (Default: \code{100L}).}
 \item{tr}{Trim level for the mean when carrying out \code{robust} tests. In case
 of an error, try reducing the value of \code{tr}, which is by default set to
 \code{0.2}. Lowering the value might help.}
+
+\item{outliers.display}{Logical that decides whether outliers are to be
+displayed as the points at boxplot (Default: \code{FALSE}).}
 
 \item{centrality.plotting}{Logical that decides whether centrality tendency
 measure is to be displayed as a point with a label (Default: \code{TRUE}).

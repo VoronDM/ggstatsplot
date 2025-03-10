@@ -40,6 +40,8 @@
 #'   `results.subtitle = FALSE`.
 #' @param caption The text for the plot caption. This argument is relevant only
 #'   if `bf.message = FALSE`.
+#' @param outliers.display Logical that decides whether outliers are to be
+#'    displayed as the points at boxplot (Default: `FALSE`).
 #' @param centrality.plotting Logical that decides whether centrality tendency
 #'   measure is to be displayed as a point with a label (Default: `TRUE`).
 #'   Function decides which central tendency measure to show depending on the
@@ -160,6 +162,7 @@ ggbetweenstats <- function(
   conf.level = 0.95,
   nboot = 100L,
   tr = 0.2,
+  outliers.display = FALSE,
   centrality.plotting = TRUE,
   centrality.type = type,
   centrality.point.args = list(size = 5, color = "darkred"),
@@ -176,7 +179,7 @@ ggbetweenstats <- function(
     stroke = 0,
     na.rm = TRUE
   ),
-  boxplot.args = list(width = 0.3, alpha = 0.2, na.rm = TRUE, outlier.shape = NA),
+  boxplot.args = list(width = 0.3, alpha = 0.2, na.rm = TRUE, outlier.colour = "red", outlier.alpha = 1),
   violin.args = list(width = 0.5, alpha = 0.2, na.rm = TRUE),
   ggsignif.args = list(textsize = 3, tip_length = 0.01, na.rm = TRUE),
   ggtheme = ggstatsplot::theme_ggstatsplot(),
@@ -225,11 +228,15 @@ ggbetweenstats <- function(
     }
   }
 
+  # outliers -------------------------------
+
+  outliers.args <- if (!outliers.display) list(outlier.shape = NA)
+
   # plot -----------------------------------
 
   plot_comparison <- ggplot(data, mapping = aes({{ x }}, {{ y }})) +
     exec(geom_point, aes(color = {{ x }}), !!!point.args) +
-    exec(geom_boxplot, !!!boxplot.args) +
+    exec(geom_boxplot, !!!boxplot.args, !!!outliers.args) +
     exec(geom_violin, !!!violin.args)
 
   # centrality tagging -------------------------------------

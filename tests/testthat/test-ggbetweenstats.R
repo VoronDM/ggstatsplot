@@ -53,6 +53,21 @@ test_that(
         title = "Bayesian Test"
       )
     )
+    set.seed(123)
+    expect_doppelganger(
+      title = "boxplot with outliers",
+      ggbetweenstats(
+        data = mtcars,
+        x = am,
+        y = wt,
+        xlab = "Transmission",
+        ylab = "Weight",
+        outliers.display = TRUE,
+        violin.args = list(width = 0, linewidth = 0),
+        point.args = list(alpha = 0),
+        title = "Bayesian Test"
+      )
+    )
   }
 )
 
