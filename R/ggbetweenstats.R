@@ -176,7 +176,7 @@ ggbetweenstats <- function(
     stroke = 0,
     na.rm = TRUE
   ),
-  boxplot.args = list(width = 0.3, alpha = 0.2, na.rm = TRUE),
+  boxplot.args = list(width = 0.3, alpha = 0.2, na.rm = TRUE, outlier.shape = NA),
   violin.args = list(width = 0.5, alpha = 0.2, na.rm = TRUE),
   ggsignif.args = list(textsize = 3, tip_length = 0.01, na.rm = TRUE),
   ggtheme = ggstatsplot::theme_ggstatsplot(),
@@ -229,7 +229,7 @@ ggbetweenstats <- function(
 
   plot_comparison <- ggplot(data, mapping = aes({{ x }}, {{ y }})) +
     exec(geom_point, aes(color = {{ x }}), !!!point.args) +
-    exec(geom_boxplot, !!!boxplot.args, outlier.shape = NA) +
+    exec(geom_boxplot, !!!boxplot.args) +
     exec(geom_violin, !!!violin.args)
 
   # centrality tagging -------------------------------------
