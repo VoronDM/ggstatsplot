@@ -1,7 +1,7 @@
 Type: Package
 Package: ggstatsplot
 Title: 'ggplot2' Based Plots with Statistical Details
-Version: 0.13.1
+Version: 0.14.0
 Authors@R: 
     c(person(given = "Indrajeet",
              family = "Patil",
@@ -12,12 +12,7 @@ Authors@R:
              family = "Powell",
              email = "ibecav@gmail.com",
              role = "ctb",
-             comment = c(ORCID = "0000-0002-3606-2188")),
-      person(given = "Vitaly",
-             family = "Korchagin",
-             email = "vitaly_korchagin@rambler.ru",
-             role = "ctb",
-             comment = c(ORCID = "0000-0003-2264-6294")))
+             comment = c(ORCID = "0000-0002-3606-2188")))
 Maintainer: Indrajeet Patil <patilindrajeet.science@gmail.com>
 Description: Extension of 'ggplot2', 'ggstatsplot' creates graphics with
     details from statistical tests included in the plots themselves. It
