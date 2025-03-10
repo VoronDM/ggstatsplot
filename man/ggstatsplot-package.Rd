@@ -65,6 +65,7 @@ Useful links:
 Other contributors:
 \itemize{
   \item Chuck Powell \email{ibecav@gmail.com} (\href{https://orcid.org/0000-0002-3606-2188}{ORCID}) [contributor]
+  \item Vitaly Korchagin \email{vitaly_korchagin@rambler.ru} (\href{https://orcid.org/0000-0003-2264-6294}{ORCID}) [contributor]
 }
 
 }
